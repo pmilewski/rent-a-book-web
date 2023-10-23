@@ -1,9 +1,15 @@
-import React from "react";
-import { Heading, Flex, Link, Box, Divider } from '@chakra-ui/react'
-import { Routes, Route, Link as RouterLink } from "react-router-dom"
-import AuthorsPage from "./pages/AuthorsPage";
+import { Routes, Route } from "react-router-dom";
+
 import BooksPage from "./pages/BooksPage";
+import AuthorsPage from "./pages/AuthorsPage";
 import UsersPage from "./pages/UsersPage";
+import { Flex, Box, Divider, Heading } from "@chakra-ui/react";
+import Link from "./components/Link";
+import BookDetailsPage from "./pages/BookDetailsPage";
+import AuthorDetailsPage from "./pages/AuthorDetailsPage";
+import UserDetailsPage from "./pages/UserDetailsPage";
+import AnythingDetailsPage from "./pages/AnythingDetailsPage";
+import EverythingPage from "./pages/EverythingPage";
 
 export default function App() {
   return (
@@ -16,30 +22,45 @@ export default function App() {
       <Flex
         direction={["column", null, "row"]}
         align="center"
-        justify="space-between"
+        justifyContent="space-between"
         w="100%"
+        mx="5"
       >
-        <Link to="/" as={RouterLink}>
+        <Link to="/">
           <Heading as="h1">Personal Library</Heading>
         </Link>
-        <Flex>
-          <Link to="/" as={RouterLink}>
-            <Box as="span">Books</Box>
+        <Box d="flex">
+          <Link to="/">
+            <h1>Books</h1>
           </Link>
-          <Divider orientation="vertical" mx="3" />
-          <Link to="/authors" as={RouterLink}>
-            <Box as="span">Authors</Box>
+          <Divider orientation="vertical" />
+          <Link to="/authors">
+            <h1>Authors</h1>
           </Link>
-          <Divider orientation="vertical" mx="3" />
-          <Link to="/users" as={RouterLink}>
-            <Box as="span">Users</Box>
+          <Divider orientation="vertical" />
+          <Link to="/users">
+            <h1>Users</h1>
           </Link>
-        </Flex>
+        </Box>
       </Flex>
       <Routes>
         <Route path="/" element={<BooksPage />} />
-        <Route path="/users" element={<UsersPage />} />
-        <Route path="/authors" element={<AuthorsPage />} />
+        <Route path="books/:bookId" element={<BookDetailsPage />} />
+        <Route path="/books/search/:searchQuery" element={<BooksPage />} />
+        <Route path="/books/search/" element={<BooksPage />} />
+
+        <Route path="authors/" element={<AuthorsPage />} />
+        <Route path="authors/:authorId" element={<AuthorDetailsPage />} />
+        <Route path="/authors/search/:searchQuery" element={<AuthorsPage />} />
+        <Route path="/authors/search/" element={<AuthorsPage />} />
+        
+        <Route path="users/" element={<UsersPage />} />
+        <Route path="users/:userId" element={<UserDetailsPage />} />
+        <Route path="/users/search/:searchQuery" element={<UsersPage />} />
+        <Route path="/users/search/" element={<UsersPage />} />
+
+        <Route path="admin/anything/:anyId" element={<AnythingDetailsPage />} />
+        <Route path="admin/everything" element={<EverythingPage />} />
       </Routes>
     </Flex>
   );

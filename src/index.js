@@ -1,5 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import { createRoot } from 'react-dom/client';
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
@@ -9,11 +7,14 @@ import { BrowserRouter as Router } from "react-router-dom"
 
 import App from "./App";
 
-const GRAPHQL_ENDPOINT = "https://examples.devmastery.pl/library-lists/graphql";
+const GRAPHQL_ENDPOINT = "https://examples.devmastery.pl/library-ids/graphql";
 
 const cache = new InMemoryCache({
-  addTypename: false,
-  resultCaching: false
+  addTypename: true,
+  resultCaching: false,
+  possibleTypes: {
+    Anything: ["Book", "Author", "User"]
+  }
 });
 const client = new ApolloClient({
   uri: GRAPHQL_ENDPOINT,
