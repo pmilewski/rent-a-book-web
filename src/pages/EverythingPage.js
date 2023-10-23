@@ -4,6 +4,7 @@ import NormalizedAnything, {
   NORMALIZED_ANYTHING_FIELDS_FRAGMENT,
   normalizedAnything
 } from "../components/NormalizedAnything";
+import Link from "../components/Link";
 
 const GET_EVERYTHING_QUERY = gql`
   query GetEverything {
@@ -32,8 +33,10 @@ export default function EverythingPage() {
       <Heading textAlign="center" color="red.500">
         Warning! Admin area!
       </Heading>
-      {normalizedEverything.map(anything => (
-        <NormalizedAnything normalizedAnything={anything} />
+      {normalizedEverything.map((anything, index) => (
+        <Link key={anything.id} to={`/admin/anything/${anything.id}`}>
+          <NormalizedAnything key={`${anything.__resource_type}-${index}`} normalizedAnything={anything} />
+        </Link>
       ))}
     </Box>
   );

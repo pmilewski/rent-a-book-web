@@ -9,6 +9,7 @@ export const normalizedAnything = anything => ({
 export const NORMALIZED_ANYTHING_FIELDS_FRAGMENT = gql`
   fragment normalizedAnythingFields on Anything {
     ... on Author {
+      id
       name
       info: bio
       img: photo {
@@ -16,13 +17,25 @@ export const NORMALIZED_ANYTHING_FIELDS_FRAGMENT = gql`
       }
     }
     ... on Book {
+      id
       name: title
       info: description
       img: cover {
         url
       }
     }
+    ... on BookCopy {
+      id
+      nested: book {
+        name: title
+        info: description
+        img: cover {
+          url
+        }
+      }
+    }
     ... on User {
+      id
       name
       info
       nested: avatar {
@@ -35,6 +48,7 @@ export const NORMALIZED_ANYTHING_FIELDS_FRAGMENT = gql`
 `;
 
 const COLORS_BY_TYPENAME = {
+  BookCopy: "purple.200",
   Book: "red.200",
   Author: "green.200",
   User: "blue.200"

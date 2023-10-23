@@ -7,13 +7,13 @@ import { BrowserRouter as Router } from "react-router-dom"
 
 import App from "./App";
 
-const GRAPHQL_ENDPOINT = "https://examples.devmastery.pl/library-ids/graphql";
+const GRAPHQL_ENDPOINT = "https://examples.devmastery.pl/library-borrow-return/graphql";
 
 const cache = new InMemoryCache({
   addTypename: true,
   resultCaching: false,
   possibleTypes: {
-    Anything: ["Book", "Author", "User"]
+    Anything: ["Book", "Author", "User", "BookCopy"]
   }
 });
 const client = new ApolloClient({

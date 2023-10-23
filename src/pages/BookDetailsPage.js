@@ -1,15 +1,20 @@
 import { gql, useQuery } from "@apollo/client";
-import { Box } from "@chakra-ui/react";
+import { Box, Heading, Flex } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import BookDetails, { BOOK_DETAILS_FIELDS_FRAGMENT } from "../components/BookDetails";
+import BookCopy, { BOOK_COPY_FIELDS_FRAGMENT } from "../components/BookCopy";
 
 const GET_BOOK_QUERY = gql`
   query GetBook($bookId: ID!) {
     book(id: $bookId) {
       ...bookDetailsFields
+      copies {
+        ...bookCopyFields
+      }
     }
   },
   ${BOOK_DETAILS_FIELDS_FRAGMENT}
+  ${BOOK_COPY_FIELDS_FRAGMENT}
 `;
 
 export default function BookDetailsPage() {
@@ -28,6 +33,20 @@ export default function BookDetailsPage() {
   return (
     <Box>
       <BookDetails book={book} />
+      <Heading as="h3" size="lg" textAlign="center">
+        Copies
+      </Heading>
+      <Flex wrap="wrap">
+        { book.copies.map(bookCopy => (
+          <BookCopy
+            key={bookCopy.id}
+            bookCopy={bookCopy}
+            showOwner
+            showBorrower
+            showActions
+          />
+        ))}
+      </Flex>
     </Box>
   );
 }
