@@ -2,9 +2,10 @@ import { gql, useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { Flex, Heading } from "@chakra-ui/react";
 import UserDetails, {USER_DETAILS_FIELDS_FRAGMENT} from "../components/UserDetails";
-import BookCopy, {BOOK_COPY_FIELDS_FRAGMENT} from "../components/BookCopy";
+import BookCopy from "../components/BookCopy";
+import {BOOK_COPY_FIELDS_FRAGMENT} from "../components/BookCopy/fragments";
 
-const GET_USER_QUERY = gql`
+export const GET_USER_QUERY = gql`
   query GetUser($userId: ID!) {
     user(id: $userId) {
       ...userDetailsFields
@@ -46,7 +47,7 @@ export default function UserDetailsPage() {
           <BookCopy
             key={bookCopy.id}
             bookCopy={bookCopy}
-            showOwner
+            // showOwner
             showBorrower
             showActions
           />
@@ -62,7 +63,7 @@ export default function UserDetailsPage() {
             key={bookCopy.id}
             bookCopy={bookCopy}
             showOwner
-            showBorrower
+            // showBorrower
             showActions
           />
         ))}

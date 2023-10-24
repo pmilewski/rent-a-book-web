@@ -5,7 +5,8 @@ import UserDetails from "./UserDetails";
 import { BOOK_DETAILS_FIELDS_FRAGMENT } from "../components/BookDetails"; 
 import { AUTHOR_DETAILS_FIELDS_FRAGMENT } from "../components/AuthorDetails";
 import { USER_DETAILS_FIELDS_FRAGMENT } from "../components/UserDetails";
-import BookCopy, { BOOK_COPY_FIELDS_FRAGMENT } from "../components/BookCopy";
+import BookCopy from "../components/BookCopy";
+import { BOOK_COPY_FIELDS_FRAGMENT } from "../components/BookCopy/fragments";
 import { gql } from "@apollo/client";
 
 export const ANYTHING_DETAILS_FIELDS_FRAGMENT = gql`

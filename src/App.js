@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import BooksPage from "./pages/BooksPage";
 import AuthorsPage from "./pages/AuthorsPage";
 import UsersPage from "./pages/UsersPage";
-import { Flex, Box, Divider, Heading } from "@chakra-ui/react";
+import { Flex, Divider, Heading } from "@chakra-ui/react";
 import Link from "./components/Link";
 import BookDetailsPage from "./pages/BookDetailsPage";
 import AuthorDetailsPage from "./pages/AuthorDetailsPage";
@@ -29,7 +29,7 @@ export default function App() {
         <Link to="/">
           <Heading as="h1">Personal Library</Heading>
         </Link>
-        <Box d="flex">
+        <Flex>
           <Link to="/">
             <h1>Books</h1>
           </Link>
@@ -41,7 +41,7 @@ export default function App() {
           <Link to="/users">
             <h1>Users</h1>
           </Link>
-        </Box>
+        </Flex>
       </Flex>
       <Routes>
         <Route path="/" element={<BooksPage />} />

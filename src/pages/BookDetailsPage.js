@@ -2,7 +2,9 @@ import { gql, useQuery } from "@apollo/client";
 import { Box, Heading, Flex } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import BookDetails, { BOOK_DETAILS_FIELDS_FRAGMENT } from "../components/BookDetails";
-import BookCopy, { BOOK_COPY_FIELDS_FRAGMENT } from "../components/BookCopy";
+import BookCopy from "../components/BookCopy";
+import { BOOK_COPY_FIELDS_FRAGMENT } from "../components/BookCopy/fragments";
+
 
 const GET_BOOK_QUERY = gql`
   query GetBook($bookId: ID!) {

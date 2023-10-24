@@ -3,31 +3,6 @@ import { Image, Box, AspectRatio } from "@chakra-ui/react";
 import Avatar, {AVATAR_FIELDS_FRAGMENT} from "./Avatar";
 import Link from "./Link";
 import BookCopyActions from "./BookCopy/BookCopyActions";
-import { gql } from "@apollo/client";
-
-export const BOOK_COPY_FIELDS_FRAGMENT = gql`
-  fragment bookCopyFields on BookCopy {
-    id
-    book {
-      cover {
-        url
-      }
-    }
-    owner {
-      id
-      avatar {
-        ...avatarFields
-      }
-    }
-    borrower {
-      id
-      avatar {
-        ...avatarFields
-      }
-    }
-  }
-  ${AVATAR_FIELDS_FRAGMENT}
-`;
 
 export default function BookCopy({
   bookCopy,
