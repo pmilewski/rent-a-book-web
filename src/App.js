@@ -8,8 +8,8 @@ import Link from "./components/Link";
 import BookDetailsPage from "./pages/BookDetailsPage";
 import AuthorDetailsPage from "./pages/AuthorDetailsPage";
 import UserDetailsPage from "./pages/UserDetailsPage";
-import AnythingDetailsPage from "./pages/AnythingDetailsPage";
-import EverythingPage from "./pages/EverythingPage";
+import ResourceDetailsPage from "./pages/ResourceDetailsPage";
+import ResourcesPage from "./pages/ResourcesPage";
 
 export default function App() {
   return (
@@ -59,8 +59,8 @@ export default function App() {
         <Route path="/users/search/:searchQuery" element={<UsersPage />} />
         <Route path="/users/search/" element={<UsersPage />} />
 
-        <Route path="admin/anything/:anyId" element={<AnythingDetailsPage />} />
-        <Route path="admin/everything" element={<EverythingPage />} />
+        <Route path="admin/resource/:anyId" element={<ResourceDetailsPage />} />
+        <Route path="admin/resources" element={<ResourcesPage />} />
       </Routes>
     </Flex>
   );

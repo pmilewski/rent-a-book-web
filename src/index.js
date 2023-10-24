@@ -13,7 +13,7 @@ const cache = new InMemoryCache({
   addTypename: true,
   resultCaching: false,
   possibleTypes: {
-    Anything: ["Book", "Author", "User", "BookCopy"]
+    Resource: ["Book", "Author", "User", "BookCopy"]
   }
 });
 const client = new ApolloClient({
